@@ -13,8 +13,10 @@
 
         <body>
        <h2>Welcome</h2><br><br>
+       
        <a href="CourseForm.jsp">Add Course</a>
       <h2>Courses List</h2> 
+     
       <table width="100%" border="1">
                        
                             <tr>
@@ -22,11 +24,11 @@
                                 <th>Name</th>
                                 <th>Description</th>
                             </tr>
-                            <c:forEach items="${courses}" var="course">
+                            <c:forEach items="${courses }" var="course">
 
                                 <tr>
                                     <td>
-                                        ${course.getId()}
+                                        ${course.id}
                                     </td>
                                     <td>
                                         ${course.getName()}

@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Form</title>
+<title>Admin login</title>
 </head>
 <body>
 <h2 align=center>ADMIN LOGIN</h2><br><br>
 <form action ="Adminlogin" method=post align=center>
 Username:<input type="text" name="username"><br><br>
-Password:<input type="text" name="password" ><br><br>
+Password:<input type="password" name="password" ><br><br>
 <input type = "submit" value="SUBMIT"><br><br>
 
 <h3>If not a registered user?Please signup first</h3>

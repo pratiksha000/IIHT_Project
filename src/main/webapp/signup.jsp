@@ -21,8 +21,6 @@ Address:<input type="text" name="address"><br><br>
 Contact:<input type="number" name="contact"><br><br>
 <input type = "submit" value="SUBMIT"><br><br>
 
-<h3>If not a registered user?Please signup first</h3><br><br>
-<a href="signup.jsp">SIGNUP</a>
 </form>
 </body>
 </html>

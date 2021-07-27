@@ -14,6 +14,17 @@
         <body>
        <h2>Congratulations!You have successfully logged in.</h2><br><br>
        <a href="/AdminPortal">Display Courses</a>
+       <br><br>
+       <a href="CourseForm.jsp">Add Course</a>
+       <br><br>
+      <!-- Course deletion by taking url parameter
+      <a href="/deleteCourse/${id}">Delete Course</a>
+      -->
+       <a href="deleteCourse.jsp">Delete Course</a>
+       <br><br>
+       <a href="CourseUpdate.jsp">Update Course</a>
+       
+        ${code}
         </body>
 
         </html>

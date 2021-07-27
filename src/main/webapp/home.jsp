@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Form</title>
+<title>E-learning</title>
 </head>
 <body>
-<h1>Welcome to Student Teacher Portal</h1>
+<h1>Welcome to E-learning Portal</h1>
 <a href ="Student_login.jsp">STUDENT LOGIN</a><br><br>
 <a href ="Admin_login.jsp">ADMIN LOGIN</a>
 </form>

@@ -13,6 +13,7 @@
 <body>
 <h1>Course Form</h1>
 <form action ="addCourse" method=post >
+
 Name:<input type="text" name="name"><br><br>
 Description:<input type="text" name="description"><br><br>
 <input type = "submit" value="SUBMIT"><br><br>

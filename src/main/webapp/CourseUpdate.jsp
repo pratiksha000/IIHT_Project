@@ -8,18 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>studentlogin</title>
+<title>Course Form</title>
 </head>
 <body>
-<h2 align =center>STUDENT LOGIN</h2><br><br>
-<form action ="studentlogin" method=post align=center >
-Username:<input type="text" name="username"><br><br>
-Password:<input type="password" name="password" ><br><br>
+<h1>Course Form</h1>
+<form action ="addCourse" method=post >
+Id:<input type="number" name="id"><br><br>
+Name:<input type="text" name="name"><br><br>
+Description:<input type="text" name="description"><br><br>
 <input type = "submit" value="SUBMIT"><br><br>
 
-<h3>If not a registered user?Please signup first</h3>
-<a href="signup.jsp">SIGNUP</a>
 </form>
-${code}
 </body>
 </html>
