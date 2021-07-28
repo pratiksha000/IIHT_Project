@@ -1,15 +1,11 @@
 package com.pratiksha.spring.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,9 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pratiksha.spring.models.Admin;
 import com.pratiksha.spring.models.Course;
+import com.pratiksha.spring.models.Enrollment;
 import com.pratiksha.spring.models.Student;
 import com.pratiksha.spring.repos.AdminRepo;
 import com.pratiksha.spring.repos.CourseRepo;
+import com.pratiksha.spring.repos.EnrollmentRepo;
 import com.pratiksha.spring.repos.StudentRepo;
 
 
@@ -36,6 +34,9 @@ public class MyController {
 	@Autowired
 	CourseRepo courserepo;
 	  
+	@Autowired
+	EnrollmentRepo enrollmentrepo;
+	
 	@RequestMapping("/")
 	public String home()
 	{
@@ -61,10 +62,11 @@ public class MyController {
 	            	System.out.println("Successful login!");
 	            	List<Course> courses= courserepo.findAll();
 	    		 String code=
-	    				"<center><H1>Listing All Courses</H1><br><br><br><table border=\"3\" cellpadding=\"3\" cellspacing=\"3\"><tr><td>Course Id</td><td>Course Name</td><td>Course Description</td></tr>";
+	    				"<center><H1>Listing All Courses</H1><br><br><br><table border=\"3\" cellpadding=\"3\" cellspacing=\"3\"><tr><td>Course Id</td><td>Course Name</td><td>Course Description</td><td>Action</td></tr>";
 	    		   for (Course ad : courses) {
+	    			   System.out.println(other.getId()+" "+ad.getId());
 	    		  code+="<tr><td>"+Integer.toString(ad.getId())+"</td><td>"+ad.getName()+
-	    		  "</td><td>"+ad.getDescription()+"</td></tr>"; 
+	    		  "</td><td>"+ad.getDescription()+"</td><td><a href ='"+EnrollStudent(other.getId(),ad.getId())+"'>Enroll</a></td></tr>"; 
 	    		  } 
 	    		   code+="</table></center>";
 	    		   return code;
@@ -108,9 +110,7 @@ public class MyController {
 		   
 		 
 		  return code;
-		 
-	       
-	        //return new ModelAndView("AdminPortal.jsp","courses",courses);
+		
 	       	
 	    }
 	  
@@ -157,7 +157,17 @@ public class MyController {
 	 * model;}
 	 */
 	    	
-
+	   // @RequestMapping("/EnrollStudent/{student_id}/{course_id}")
+		//public String EnrollStudent(@PathVariable("student_id") int student_id,@PathVariable("course_id")int course_id )
+	    public String EnrollStudent( int student_id,int course_id ){
+	    	Enrollment enrollment =new Enrollment();
+	    	enrollment.setStudent_id(student_id);
+	    	enrollment.setCourse_id(course_id);
+			enrollmentrepo.save(enrollment);
+			System.out.println("Successfully enrolled");
+			return "CourseEnroll.jsp";
+			
+		}  
 			
 			
 		
