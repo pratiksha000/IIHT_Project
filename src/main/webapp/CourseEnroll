@@ -12,6 +12,7 @@
 </head>
 <body>
 <h1>Congratulations you have successfully enrolled in the course.</h1>
+${code}
 
 </body>
 </html>

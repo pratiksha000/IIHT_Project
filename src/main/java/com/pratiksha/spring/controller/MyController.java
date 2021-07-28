@@ -64,9 +64,8 @@ public class MyController {
 	    		 String code=
 	    				"<center><H1>Listing All Courses</H1><br><br><br><table border=\"3\" cellpadding=\"3\" cellspacing=\"3\"><tr><td>Course Id</td><td>Course Name</td><td>Course Description</td><td>Action</td></tr>";
 	    		   for (Course ad : courses) {
-	    			   System.out.println(other.getId()+" "+ad.getId());
 	    		  code+="<tr><td>"+Integer.toString(ad.getId())+"</td><td>"+ad.getName()+
-	    		  "</td><td>"+ad.getDescription()+"</td><td><a href ='"+EnrollStudent(other.getId(),ad.getId())+"'>Enroll</a></td></tr>"; 
+	    		  "</td><td>"+ad.getDescription()+"</td><td><a href ='"+"/EnrollStudent/${student_id}/${course_id}"+"'>Enroll</a></td></tr>"; 
 	    		  } 
 	    		   code+="</table></center>";
 	    		   return code;
@@ -79,7 +78,7 @@ public class MyController {
 	  
 	  @RequestMapping("/Adminlogin")
 	    public String loginAdmin(Admin admin) {
-		  System.out.println("Inside student login");
+		  System.out.println("Inside admin login");
 	        List<Admin> admins = adminrepo.findAll();
 	        for (Admin other : admins) {
 	            if (other.equals(admin)) {
@@ -87,7 +86,7 @@ public class MyController {
 	            	return "successlogin.jsp";
 	            }
 	        }
-			return "Student_login.jsp";
+			return "Admin_login.jsp";
 	    }
 	  
 	  @ResponseBody
@@ -156,16 +155,14 @@ public class MyController {
 	 * course=courserepo.findById(id); model.addObject("courseform",course); return
 	 * model;}
 	 */
-	    	
-	   // @RequestMapping("/EnrollStudent/{student_id}/{course_id}")
-		//public String EnrollStudent(@PathVariable("student_id") int student_id,@PathVariable("course_id")int course_id )
-	    public String EnrollStudent( int student_id,int course_id ){
-	    	Enrollment enrollment =new Enrollment();
-	    	enrollment.setStudent_id(student_id);
-	    	enrollment.setCourse_id(course_id);
-			enrollmentrepo.save(enrollment);
+	    
+	    
+	    @RequestMapping("/EnrollStudent/{student_id}/{course_id}")
+		public void EnrollStudent(@PathVariable("student_id") int student_id,@PathVariable("course_id")int course_id ) {
+	    
+	    	enrollmentrepo.enroll(student_id,course_id);
 			System.out.println("Successfully enrolled");
-			return "CourseEnroll.jsp";
+			//return "CourseEnroll.jsp";
 			
 		}  
 			
